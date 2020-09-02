@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Only Burguers</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<style>
+    @font-face {
+        font-family: crayonFont;
+        src: url(./resources/ColoredCrayons-7wPR.ttf);
+    }
+
+    body{
+    overflow-x:hidden;
+    overflow-y:hidden;
+    }
+
+    body,
+    .modal-body{
+        background-image: url(./resources/backgroung-big-texture.jpg);
+        font-family: crayonFont;
+    }
+
+    .jumbotron {
+        font-family: crayonFont;
+        background-image: url(./resources/backgroung-big-texture.jpg);
+        max-height: 200px;
+        padding-top: 3%;
+        margin-bottom: 0;
+        text-align: left;
+    }
+
+    .logo {
+        max-width: 200px;
+        max-height: 200px;
+    }
+
+    .btn-primary {
+        background-color: black;
+    }
+
+    .btn-custom {
+        padding-top: 10px;
+        font-family: crayonFont;
+        font-size: x-large;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        color: #ffee00;
+        text-align: left;
+    }
+
+    .btn-custom:hover {
+        background-color: #ffee00;
+        color: black;
+    }
+
+    .btn-custom:focus {
+        outline: 0;
+    }
+
+    .nopadding {
+        padding-left: 0;
+    }
+
+    .big-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    h1 {
+        color: #ffee00;
+    }
+
+    p {
+        font-family: crayonFont;
+        font-size: 20px;
+    }
+
+    #map_canvas {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    #map_canvas {
+        position: relative;
+    }
+
+
+    #putaburguerpreto {
+        position: absolute;
+        top: -10%;
+        right: -20%;
+    }
+</style>
+
+<script>
+
+    function fixBurguer() {
+        if (window.matchMedia("(max-width: 767px)").matches) {
+            $('#putaburguerpreto').hide();
+            $('.btn-custom').css('margin-top', '40px');
+        } else {
+            $('#putaburguerpreto').show();
+            $('.btn-custom').css('margin-top', '20px');
+
+
+        }
+    }
+
+    $(document).ready(function () {
+        $(window).resize(function () {
+            fixBurguer();
+        });
+    });
+</script>
+
+
+<body>
+
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-sm-2">
+                <img src="./resources/desenho-burguer.png" class="img-responsive logo" alt="Logo">
+            </div>
+            <div class="col-sm-4">
+                <h1 class="titulo">ONLY BURGUERS</h1>
+                <p style="color: white; padding-bottom: 20px;">THE RIGHT WAY TO MAKE YOUR BURGUERS</p>
+            </div>
+            <!--right empty space-->
+            <div class="col-sm-6"></div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4 offset-2">
+                <button type="button" class="btn btn-custom" onclick="window.location='./pedido.html';">
+                    <i class="fas fa-hamburger"></i>
+                    COMPRE SEU BURGUER AGORA
+                </button>
+            </div>
+            <div class="col-sm-6"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 offset-2 ">
+                <button type="button" class="btn btn-custom">
+                    <i class="fas fa-biking"></i>
+                    ACOMPANHE SEU PEDIDO
+                </button>
+            </div>
+            <div class="col-sm-6"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 offset-2 ">
+                <button type="button" class="btn btn-custom" onclick="window.location='./contact.html';">
+                    <i class="fas fa-phone-alt"></i>
+                    FALE CONOSCO
+                </button>
+            </div>
+            <div class="col-sm-6"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 offset-2 ">
+                <button type="button" class="btn btn-custom" data-toggle="modal" data-target="#mapModal">
+                    <i class="fas fa-map"></i>
+                    COMO CHEGAR?
+                </button>
+            </div>
+            <div class="col-sm-6"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 offset-2 ">
+                <button type="button" class="btn btn-custom" onclick="window.location='./sobre.html';">
+                    <i class="fas fa-grin"></i>
+                    SOBRE NOS
+                </button>
+            </div>
+            <div class="col-sm-6"></div>
+        </div>
+
+
+
+    </div>
+    <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="MapModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="MapModalLabel">Como Chegar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!--Google map-->
+                    <div id="map-canvas">
+                        <iframe src="https://maps.google.com/maps?q=new%20delphi&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                            frameborder="0" style="border:0" width="470px" height="400px"></iframe>
+                    </div>
+
+                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <img id="putaburguerpreto" src="./resources/hamburguer-preto.png" onload="fixBurguer();">
+    </div>
+
+
+</body>
+
+</html>

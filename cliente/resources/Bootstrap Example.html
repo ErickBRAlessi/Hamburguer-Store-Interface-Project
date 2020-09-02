@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)file:///C:/Users/Erick/Desktop/UFPR/UI/pedido.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Bootstrap Example</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./Bootstrap Example_files/bootstrap.min.css">
+    <script src="./Bootstrap Example_files/jquery.min.js.download"></script>
+    <script src="./Bootstrap Example_files/popper.min.js.download"></script>
+    <script src="./Bootstrap Example_files/bootstrap.min.js.download"></script>
+    <script src="./Bootstrap Example_files/a076d05399.js.download"></script><link rel="stylesheet" href="./Bootstrap Example_files/free.min.css" media="all">
+<style>
+    @font-face {
+        font-family: crayonFont;
+        src: url(./resources/ColoredCrayons-7wPR.ttf);
+    }
+
+    body {
+
+        background-image: url(./resources/backgroung-big-texture.jpg);
+    }
+
+    body * {
+        font-family: crayonFont;
+    }
+
+
+    .logo {
+        max-width: 200px;
+        max-height: 200px;
+    }
+
+    .btn-primary {
+        background-color: black;
+    }
+
+    .btn-custom {
+        padding-top: 10px;
+        font-family: crayonFont;
+        font-size: x-large;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        color: #ffee00;
+        text-align: left;
+    }
+
+    .btn-custom:hover {
+        background-color: #ffee00;
+        color: black;
+    }
+
+    .btn-custom:focus {
+        outline: 0;
+    }
+
+    .nopadding {
+        padding-left: 0;
+    }
+
+    .big-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    h1 {
+        color: #ffee00;
+    }
+
+    p {
+        font-family: crayonFont;
+        font-size: 20px;
+    }
+
+    .legenda {
+        text-align: center;
+    }
+
+    #putaburguerpreto {
+        position: absolute;
+        top: -10%;
+        right: -20%;
+    }
+
+    .form {
+        padding-bottom: 20px;
+    }
+</style><script>
+
+    function fixBurguer() {
+        if (window.matchMedia("(max-width: 767px)").matches) {
+            $('#putaburguerpreto').hide();
+            $('.btn-custom').css('margin-top', '40px');
+        } else {
+            $('#putaburguerpreto').show();
+            $('.btn-custom').css('margin-top', '20px');
+
+
+        }
+    }
+
+    $('form-check').on('change', function (e) {
+        console.log("aaa");
+        console.log($("form-check:selected"));
+        var optionSelected = $("option:selected", this);
+        var valueSelected = this.value;
+    }
+    );
+
+    $(document).ready(function () {
+        $(window).resize(function () {
+            fixBurguer();
+        });
+    });
+</script></head>
+
+
+
+
+
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4 offset-2">
+                <h1 style="color: white">CRAFT YOUR BURGUER</h1>
+                <p style="color: white; padding-bottom: 20px;">ESCOLHA SEUS INGREDIENTES</p>
+
+            </div>
+            <!--right empty space-->
+            <div class="col-sm-6"></div>
+        </div>
+        <div class="row">
+            <div class="form col-sm-6">
+
+                <div class="row">
+                    <div class="legenda col-sm-4">
+                        <p style="color: white">PAO</p>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="form-check btn-custom" style="margin-top: 20px;">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1">
+                            <label class="form-check-label" for="gridRadios1">
+                                Pao de Brioche
+                            </label>
+                        </div>
+                        <div class="form-check btn-custom" style="margin-top: 20px;">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                            <label class="form-check-label" for="gridRadios2">
+                                Pao Australiano
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="legenda col-sm-4">
+                        <p style="color: white">HAMBURGUER</p>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="form-check btn-custom" style="margin-top: 20px;">
+                            <input class="form-check-input" type="radio" name="gridRadios1" id="gridRadios1" value="option1">
+                            <label class="form-check-label" for="gridRadios1">
+                                Hamburguer de Costela
+                            </label>
+                        </div>
+                        <div class="form-check btn-custom" style="margin-top: 20px;">
+                            <input class="form-check-input" type="radio" name="gridRadios1" id="gridRadios2" value="option2">
+                            <label class="form-check-label" for="gridRadios2">
+                                Hamburguer de Fraldinha
+                            </label>
+                        </div>
+                        <div class="form-check btn-custom" style="margin-top: 20px;">
+                            <input class="form-check-input" type="radio" name="gridRadios1" id="gridRadios2" value="option2">
+                            <label class="form-check-label" for="gridRadios2">
+                                Hamburguer de Suino
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="legenda col-sm-4">
+                        <p style="color: white">QUEIJO</p>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="form-check btn-custom" style="margin-top: 20px;">
+                            <input class="form-check-input" type="radio" name="gridRadios3" id="gridRadios1" value="option1">
+                            <label class="form-check-label" for="gridRadios1">
+                                Queijo Cheeder
+                            </label>
+                        </div>
+                        <div class="form-check btn-custom" style="margin-top: 20px;">
+                            <input class="form-check-input" type="radio" name="gridRadios3" id="gridRadios2" value="option2">
+                            <label class="form-check-label" for="gridRadios2">
+                                Queijo Prato
+                            </label>
+                        </div>
+                        <div class="form-check btn-custom" style="margin-top: 20px;">
+                            <input class="form-check-input" type="radio" name="gridRadios3" id="gridRadios2" value="option2">
+                            <label class="form-check-label" for="gridRadios3">
+                                Muzzarela
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 draw-hamburguer">
+                <div class="col-sm-12">
+                    <img src="./Bootstrap Example_files/top-burguer.png">
+                </div>
+                <div class="col-sm-12" style="top: -10%;">
+                    <img src="./Bootstrap Example_files/burguer-cheese.png">
+                </div>
+                <div class="col-sm-12" style="top: -30%;">
+                    <img src="./Bootstrap Example_files/burguer-meet.png">
+                </div>
+                <div class="col-sm-12" style="top: -40%">
+                    <img src="./Bootstrap Example_files/bottom-burger.png">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+</body></html>

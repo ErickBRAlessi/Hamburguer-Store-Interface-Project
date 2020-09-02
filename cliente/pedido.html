@@ -1,0 +1,520 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Only Burguers - Pedido</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<style>
+    @font-face {
+        font-family: crayonFont;
+        src: url(./resources/ColoredCrayons-7wPR.ttf);
+    }
+
+    body,
+    .modal-body {
+
+        background-image: url(./resources/backgroung-big-texture.jpg);
+    }
+
+    body * {
+        font-family: crayonFont;
+    }
+
+
+    .logo {
+        max-width: 200px;
+        max-height: 200px;
+    }
+
+    .btn-primary {
+        background-color: black;
+    }
+
+    .btn-custom {
+        padding-top: 10px;
+        font-family: crayonFont;
+        font-size: x-large;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        color: #ffee00;
+        text-align: left;
+    }
+
+    .btn-custom:hover {
+        background-color: #ffee00;
+        color: black;
+    }
+
+    .btn-custom:focus {
+        outline: 0;
+    }
+
+    .btn-custom:disabled {
+        color: white;
+        opacity: 100;
+        background: none;
+    }
+
+    .nopadding {
+        padding-left: 0;
+    }
+
+    .big-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    h1 {
+        color: #ffee00;
+    }
+
+    p,
+    h4 {
+        font-family: crayonFont;
+        font-size: 20px;
+        color: white;
+    }
+
+    .legenda {
+        text-align: center;
+    }
+
+    #putaburguerpreto {
+        position: absolute;
+        top: -10%;
+        right: -20%;
+    }
+
+    .form {
+        padding-bottom: 20px;
+    }
+
+    button.remover {
+        background: none;
+        border: none;
+    }
+
+    ul,
+    li {
+        list-style-type: none;
+    }
+
+    .form-control,
+    .form-control:focus {
+        color: black;
+        font-weight: bolder;
+    }
+
+    body{
+    overflow-x:hidden;
+    }
+</style>
+
+<script>
+    numeroHamburguer = 0;
+    id = 0;
+
+    function adicionarbebida() {
+        coca = $('#coca').val();
+        cerveja = $('#cerveja').val()
+        if (coca > 0) {
+            $("#pedido").append('<li id="li' + id + '">' + '<div style="color: white; min-height: 20px;">' +
+                '<p style="text-align: left;">' + coca + ' Coca-Cola $' + (5 * coca) + '<button class="remover" onclick="remover(this)">X</button></p></li>');
+            id++;
+        }
+        if (cerveja > 0) {
+            $("#pedido").append('<li id="li' + id + '">' + '<div style="color: white; min-height: 20px;">' +
+                '<p style="text-align: left;">' + cerveja + ' Cerveja $' + (6 * cerveja) + '<button class="remover" onclick="remover(this)">X</button></p></li>');
+            id++;
+        }
+        $("#item-fechar-pedido").html($('#pedido').html());
+    }
+
+    function remover(elem) {
+        id = elem.parentNode.parentNode.parentNode.id;
+        $('#' + id).remove();
+        $("#item-fechar-pedido").html($('#pedido').html());
+    }
+
+    function adicionar() {
+        pao = $('input[name=pao]:checked').val();
+        carne = $('input[name=carne]:checked').val();
+        queijo = $('input[name=queijo]:checked').val();
+        if (typeof pao === 'undefined' || typeof carne === 'undefined' || queijo === 'undefined') {
+            alert("Hamburguer incompleto o burguer");
+        } else {
+            $("#pedido").append('<li id="li' + id + '">' + '<div style="color: white; min-height: 20px;">' +
+                '<p style="text-align: left;">' + '  HAMBURGUER ' + carne + ' PAO ' + pao + ' QUEIJO ' + queijo + ' $15' + '<button class="remover" onclick="remover(this)">X</button></p></li>');
+            id++;
+            $("#item-fechar-pedido").html($('#pedido').html());
+            $('#fechar-pedido-botao').attr('disabled',false);
+        }
+
+    }
+
+
+
+    function fixBurguer() {
+        if (window.matchMedia("(max-width: 767px)").matches) {
+            $('#putaburguerpreto').hide();
+            $('.btn-custom').css('margin-top', '40px');
+        } else {
+            $('#putaburguerpreto').show();
+            $('.btn-custom').css('margin-top', '20px');
+        }
+    }
+
+    function lookforchange() {
+        $('.form-check-input').on('change', function (e) {
+            pao = $('input[name=pao]:checked').val();
+            carne = $('input[name=carne]:checked').val();
+            queijo = $('input[name=queijo]:checked').val();
+            if ((pao === 'australiano') || (pao === 'brioche')) {
+                $('#top-burguer').show();
+                $('#burguer-bottom').show();
+                console.log(pao);
+            }
+            if ((carne === 'costela') || (carne === 'fraldinha') || (carne === 'suino')) {
+                $('#burguer-meet').show();
+                console.log(carne);
+            }
+
+            if ((queijo === 'muzzarela') || (queijo === 'cheeder') || (queijo === 'prato')) {
+                $('#burguer-cheese').show();
+                console.log(queijo);
+            }
+        }
+        );
+    };
+
+    $(document).ready(function () {
+        lookforchange();
+        //flash the complete burguer, it will work for now
+        $('#top-burguer').hide();
+        $('#burguer-bottom').hide();
+        $('#burguer-cheese').hide();
+        $('#burguer-meet').hide();
+        $(window).resize(function () {
+            fixBurguer();
+        });
+    });
+</script>
+
+
+<body>
+    <div class="container-fluid">
+        <div class="row" style="padding-top: 3%; ">
+            <div class="col-sm-1 offset-1">
+                <a href="./index.html">
+                    <button type="button" class="btn btn-custom">
+                        <i class="fas fa-market"></i>
+                        VOLTAR </button>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <a href="./index.html" style="text-decoration: none; color:#ffee00;">
+                    <h1 style="color: white">CRAFT YOUR BURGUER</h1>
+                </a>
+                <p style="color: white; padding-bottom: 20px;">ESCOLHA SEUS INGREDIENTES</p>
+
+            </div>
+            <!--right empty space-->
+            <div class="col-sm-6"></div>
+        </div>
+        <div class="row" style="top:-50%;">
+            <div class="col-sm-3 offset-2">
+                <button type="button" class="btn btn-custom" onclick="adicionar()">
+                    <i class="fas fa-market"></i>
+                    ADICIONAR AO CARRINHO
+                </button>
+            </div>
+            <div class="col-sm-3">
+                <button type="button" class="btn btn-custom" data-toggle="modal" data-target="#bebidasModal">
+                    <i class="fas fa-market"></i>
+                    BEBIDAS E SOBREMESA
+                </button>
+            </div>
+            <div class="col-sm-3">
+                <button type="button" id="fechar-pedido-botao" disabled="true" class="btn btn-custom" data-toggle="modal" data-target="#pagamentoModal">
+                    <i class="fas fa-market"></i>
+                    FECHAR PEDIDO
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="ul col-sm-8 offset-2" id="pedido">
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form col-sm-6">
+            <div class="row">
+                <div class="legenda col-sm-4">
+                    <p style="color: white">PAO</p>
+                </div>
+                <div class="col-sm-8" id="select-pao">
+                    <div class="form-check btn-custom">
+                        <input class="form-check-input" type="radio" name="pao" id="opc-brioche" value="brioche">
+                        <label class="form-check-label" for="opc-brioche">
+                            Pao de Brioche
+                        </label>
+                    </div>
+                    <div class="form-check btn-custom">
+                        <input class="form-check-input" type="radio" name="pao" id="opc-australiano"
+                            value="australiano">
+                        <label class="form-check-label" for="opc-australiano">
+                            Pao Australiano
+                        </label>
+                    </div>
+                </div>
+
+                <div class="legenda col-sm-4">
+                    <p style="color: white">HAMBURGUER</p>
+                </div>
+                <div class="col-sm-8">
+                    <div class="form-check btn-custom">
+                        <input class="form-check-input" type="radio" name="carne" id="opc-costela" value="costela">
+                        <label class="form-check-label" for="opc-costela">
+                            Hamburguer de Costela
+                        </label>
+                    </div>
+                    <div class="form-check btn-custom">
+                        <input class="form-check-input" type="radio" name="carne" id="opc-fraldinha" value="fraldinha">
+                        <label class="form-check-label" for="opc-fraldinha">
+                            Hamburguer de Fraldinha
+                        </label>
+                    </div>
+                    <div class="form-check btn-custom">
+                        <input class="form-check-input" type="radio" name="carne" id="opc-suino" value="suino">
+                        <label class="form-check-label" for="opc-suino">
+                            Hamburguer de Suino
+                        </label>
+                    </div>
+                </div>
+
+                <div class="legenda col-sm-4">
+                    <p style="color: white">QUEIJO</p>
+                </div>
+                <div class="col-sm-8">
+                    <div class="form-check btn-custom">
+                        <input class="form-check-input" type="radio" name="queijo" id="opc-cheeder" value="cheeder">
+                        <label class="form-check-label" for="opc-cheeder">
+                            Queijo Cheeder
+                        </label>
+                    </div>
+                    <div class="form-check btn-custom">
+                        <input class="form-check-input" type="radio" name="queijo" id="opc-prato" value="prato">
+                        <label class="form-check-label" for="opc-prato">
+                            Queijo Prato
+                        </label>
+                    </div>
+                    <div class="form-check btn-custom">
+                        <input class="form-check-input" type="radio" name="queijo" id="opc-muzzarela" value="muzzarela">
+                        <label class="form-check-label" for="opc-muzzarela">
+                            Muzzarela
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 draw-hamburguer">
+            <div class="col-sm-12" style="min-height: 150px; z-index: 4;">
+                <img src="resources/top-burguer.png" id="top-burguer">
+            </div>
+            <div class="col-sm-12" style="top: -10%; min-height: 150px; z-index: 3;">
+                <img src="resources/burguer-cheese.png" id="burguer-cheese">
+            </div>
+            <div class="col-sm-12" style="top: -30%; min-height: 150px; z-index: 2;">
+                <img src="resources/burguer-meet.png" id="burguer-meet">
+            </div>
+            <div class="col-sm-12" style="top: -40%; min-height: 150px">
+                <img src="resources/bottom-burger.png" id="burguer-bottom">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="bebidasModal" tabindex="-1" role="dialog" aria-labelledby="bebidasModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bebidasModalLabel">Adicionar Bebida</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form">
+                        <div class="row">
+                            <select class="custom-select col-sm-2 offset-2" id="coca">
+                                <option value="0" selected>Zero</option>
+                                <option value="1">Uma</option>
+                                <option value="2">Duas</option>
+                                <option value="3">Tres</option>
+                            </select>
+                            <p class="col-sm-8" style="color: white; vertical-align: center;">Coca-Cola</p>
+                        </div>
+                        <div class="row">
+                            <select class="custom-select col-sm-2 offset-2" id="cerveja">
+                                <option value="0" selected>Zero</option>
+                                <option value="1">Uma</option>
+                                <option value="2">Duas</option>
+                                <option value="3">Tres</option>
+                            </select>
+                            <p class="col-sm-8" style="color: white; vertical-align: center;">Cerveja</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" onclick="adicionarbebida()">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="pagamentoModal" tabindex="-1" role="dialog" aria-labelledby="pagamentoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="pagamentoModalLabel">Fechar Pedido</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form">
+                        <div class="row">
+
+                            <div class="col-sm-6">
+                                <h4 style="color: #ffee00;">PEDIDO</h4>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="row">
+                            </div>
+                            <div id="item-fechar-pedido">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h4 style="color: #ffee00;">ENTREGA</h4>
+                            </div>
+                            <div class="col-sm-12">
+
+                                <form class="needs-validation" novalidate="">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <h4>Nome</h4>
+                                            <input type="text" class="form-control" id="firstName" placeholder="Joao"
+                                                value="" required="">
+                                            <div class="invalid-feedback">
+                                                Valid first name is required.
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h4 for="lastName">Sobrenome</h4>
+                                            <input type="text" class="form-control" id="lastName" placeholder="Silva"
+                                                value="" required="">
+                                            <div class="invalid-feedback">
+                                                Valid last name is required.
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-12">
+                                            <h4>Endereco</h4>
+                                            <input type="text" class="form-control" id="address"
+                                                placeholder="Rua de Verdade 123" required="">
+                                            <div class="invalid-feedback">
+                                                Please enter your shipping address.
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <h4>CEP</h4>
+                                            <input type="text" class="form-control" id="zip" placeholder="" required="">
+                                            <div class="invalid-feedback">
+                                                Zip code required.
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="row" style="color: white;">
+                            <div class="col-sm-6">
+                                <h4 style="color: #ffee00;">PAGAMENTO</h4>
+                            </div>
+                            <div class="col-sm-6"></div>
+
+                            <div class="col-sm-12">
+                                <div class="custom-control custom-radio">
+                                    <input id="credit" name="paymentMethod" type="radio" class="custom-control-input"
+                                        checked="" required="">
+                                    <label class="custom-control-label" for="credit">Cartao de Credito</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="custom-control custom-radio">
+                                    <input id="debit" name="paymentMethod" type="radio" class="custom-control-input"
+                                        required="">
+                                    <label class="custom-control-label" for="debit">Cartao de Debito</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h4>Nome no Cartao</h4>
+                                <input type="text" class="form-control" id="cc-name" placeholder="" required="">
+                                <div class="invalid-feedback">
+                                    Name on card is required
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <h4>Numero</h4>
+                                <input type="text" class="form-control" id="cc-number" placeholder="" required="">
+                                <div class="invalid-feedback">
+                                    Credit card number is required
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h4>Expericao<h4>
+                                        <input type="text" class="form-control" id="cc-expiration" placeholder=""
+                                            required="">
+                                        <div class="invalid-feedback">
+                                            Expiration date required
+                                        </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <h4>CVV<h4>
+                                        <input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
+                                        <div class="invalid-feedback">
+                                            Security code required
+                                        </div>
+                            </div>
+                        </div>
+                        <hr class="col-sm-4">
+                        <button class="btn btn-primary btn-lg btn-block"
+                            onclick="alert('COMPRA FINALIZADA COM SUCESSO')">Finalizar Compra</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

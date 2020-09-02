@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Only Burguers - Sobre</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<style>
+    @font-face {
+        font-family: crayonFont;
+        src: url(./resources/ColoredCrayons-7wPR.ttf);
+    }
+
+    body,
+    .modal-body {
+
+        background-image: url(./resources/backgroung-big-texture.jpg);
+    }
+
+    body * {
+        font-family: crayonFont;
+    }
+
+
+    .logo {
+        max-width: 200px;
+        max-height: 200px;
+    }
+
+    .btn-primary {
+        background-color: black;
+    }
+
+    .btn-custom {
+        padding-top: 10px;
+        font-family: crayonFont;
+        font-size: x-large;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        color: #ffee00;
+        text-align: left;
+    }
+
+    .btn-custom:hover {
+        background-color: #ffee00;
+        color: black;
+    }
+
+    .btn-custom:focus {
+        outline: 0;
+    }
+
+    .nopadding {
+        padding-left: 0;
+    }
+
+    .big-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    h1 {
+        color: #ffee00;
+    }
+
+    p,
+    h4 {
+        font-family: crayonFont;
+        font-size: 20px;
+        color: white;
+    }
+
+    img {
+        text-align: center;
+    }
+
+    .legenda {
+        text-align: center;
+    }
+
+    #putaburguerpreto {
+        position: absolute;
+        top: -10%;
+        right: -20%;
+    }
+
+    .form {
+        padding-bottom: 20px;
+    }
+
+    button.remover {
+        background: none;
+        border: none;
+    }
+
+    ul,
+    li {
+        list-style-type: none;
+    }
+
+    .form-control,
+    .form-control:focus {
+        color: black;
+        font-weight: bolder;
+    }
+
+    #video {
+        position: absolute;
+        margin: auto;
+        left: 38%;
+
+    }
+</style>
+
+
+<body>
+    <div class="container-fluid">
+        <div class="row" style="padding-top: 3%; ">
+            <div class="col-sm-1 offset-1">
+                <a href="./index.html">
+                    <button type="button" class="btn btn-custom">
+                        <i class="fas fa-market"></i>
+                        VOLTAR </button>
+                </a>
+            </div>
+            <div class="col-sm-10">
+                <a href="./index.html" style="text-decoration: none; color:#ffee00;">
+                    <h1 style="color: white; text-align: center;">SOBRE NOS</h1>
+                </a>
+                <p style="color: #ffee00; padding-bottom: 20px; text-align: center;">EQUIPE</p>
+
+            </div>
+        </div>
+        <div class="row" style="top:-50%;">
+            <div class="col-sm-6">
+                <h4 style="text-align: center;  color:#ffee00;">
+                    ERICK ALESSI
+                </h4>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <img src="./resources/erick.jpg" class="rounded-circle  mx-auto d-block" width="200px"
+                            height="200px">
+                    </div>
+                    <div class="col-sm-8">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec lacinia augue. Praesent
+                            finibus est a ligula ultrices, non blandit mi rhoncus. Quisque pharetra lorem non ultrices
+                            porttitor. Sed iaculis mollis sodales. Cras id molestie turpis. Duis turpis lorem, laoreet
+                            eu arcu ut, molestie commodo sem. Proin et odio nec urna placerat hendrerit ut at lorem.</p>
+                    </div>
+                    <div class="col-sm-0"></div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <h4 style="text-align: center;  color:#ffee00;">
+                    BRUNO FERNANDES
+                </h4>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <img src="./resources/BRUNO.jpg" class="rounded-circle  mx-auto d-block" width="200px"
+                            height="200px">
+                    </div>
+                    <div class="col-sm-8">
+                        <p>Nullam at libero non massa lacinia gravida. In sed sagittis leo. Aenean vel nisi justo.
+                            Suspendisse maximus, nulla eu gravida sagittis, nisl augue semper purus, a fringilla sapien
+                            est vitae neque. Quisque in nulla sit amet felis tincidunt varius. Aliquam tempor
+                            scelerisque purus, volutpat pharetra lectus vestibulum et. Curabitur bibendum fringilla dui,
+                            id cursus diam.
+                        </p>
+                    </div>
+                    <div class="col-sm-0"></div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row" style="padding-top: 3%; ">
+                <div class="col-sm-12">
+                    <p style="color: #ffee00; padding-bottom: 20px; text-align: center;">PREPARACAO DOS BURGUERS</p>
+                    <p style="text-align: center;">#PARACEGOVER hamburguer fritando e sendo virado em uma frigideira</p>
+                </div>
+            </div>
+            <div class="row">
+                <iframe id="video" class="rounded" src="./resources/video.mp4"></iframe>
+            </div>
+
+        </div>
+
+</body>
+
+</html>
